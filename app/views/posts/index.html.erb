@@ -1,0 +1,36 @@
+<!--# C:\Sites\blog\app\views\posts\index.html.erb -->
+
+<h1>Listing posts</h1>
+<!-- # this view iterrates over the contents of the @posts array to display the content and links. 
+# link_to builds a hyperlink to a particulr destination --> 
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Title</th>
+    <th>Content</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @posts.each do |post| %>
+  <tr>
+    <td><%= post.name %></td>
+    <td><%= post.title %></td>
+    <td><%= post.content %></td>
+    <td><%= link_to 'Show', post %></td>   
+	
+	<!-- # edit_post_path is a helper that Rails provides as part of REST routing -->
+    <td><%= link_to 'Edit', edit_post_path(post) %></td>
+    
+	<td><%= link_to 'Destroy', post, confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<!-- # and new_post_path is a helper that Rails provides as part of REST routing -->
+<%= link_to 'New Post', new_post_path %> 
+
+
